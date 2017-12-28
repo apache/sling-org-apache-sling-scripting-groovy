@@ -31,7 +31,7 @@
   <version>1.0.3-SNAPSHOT</version>
   <packaging>bundle</packaging>
 
-  <name>Apache Sling Scripting Groovy Support</name>
+  <name>Apache Sling Scripting Groovy</name>
   <description>Support for scripting with Groovy</description>
 
   <properties>

@@ -14,33 +14,33 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.apache.sling.scripting.groovy.json.internal;
+package org.apache.sling.scripting.groovy.internal;
+
+import javax.script.Bindings;
 
 import groovy.json.JsonBuilder;
-
-import java.util.HashMap;
-
-import org.apache.felix.scr.annotations.Component;
-import org.apache.felix.scr.annotations.Properties;
-import org.apache.felix.scr.annotations.Property;
-import org.apache.felix.scr.annotations.Service;
+import org.apache.sling.scripting.api.BindingsValuesProvider;
+import org.osgi.service.component.annotations.Component;
 
 /**
  * BindingsValuesProvider which binds an instance of JsonBuilder.
  */
-@SuppressWarnings("serial")
-@Component(immediate=true, metatype=false)
-@Service
-@Properties({
-    @Property(name="service.description", value="JSONGroovyBuilder BindingsValuesProvider"),
-    @Property(name="service.vendor", value="The Apache Software Foundation"),
-    @Property(name="javax.script.name", value="groovy")
-})
-public class JsonBuilderBindingsValuesProvider extends HashMap<String, Object> {
+@Component(
+    immediate = true,
+    service = BindingsValuesProvider.class,
+    property = {
+        "javax.script.name=gsp",
+        "service.description=Groovy JsonBuilder BindingsValuesProvider",
+        "service.vendor=The Apache Software Foundation"
 
-    public JsonBuilderBindingsValuesProvider() {
-        super();
-        put("jsonBuilder", new JsonBuilder());
+    }
+)
+public class JsonBuilderBindingsValuesProvider implements BindingsValuesProvider {
+
+    @Override
+    public void addBindings(final Bindings bindings) {
+        final JsonBuilder jsonBuilder = new JsonBuilder();
+        bindings.put("jsonBuilder", jsonBuilder);
     }
 
 }

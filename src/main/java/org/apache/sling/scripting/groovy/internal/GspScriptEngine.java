@@ -14,51 +14,49 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.apache.sling.scripting.groovy.scripting.internal;
-
-import groovy.lang.Writable;
-import groovy.text.GStringTemplateEngine;
-import groovy.text.Template;
-import groovy.text.TemplateEngine;
+package org.apache.sling.scripting.groovy.internal;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 
 import javax.script.Bindings;
 import javax.script.ScriptContext;
 import javax.script.ScriptEngineFactory;
 import javax.script.ScriptException;
 
+import groovy.lang.Writable;
+import groovy.text.GStringTemplateEngine;
+import groovy.text.Template;
+import groovy.text.TemplateEngine;
 import org.apache.sling.scripting.api.AbstractSlingScriptEngine;
 
 /**
- * The actual GSP Script Engine, which simply wraps Groovy's 
+ * The actual GSP Script Engine, which simply wraps Groovy's
  */
-public class GSPScriptEngine extends AbstractSlingScriptEngine {
+public class GspScriptEngine extends AbstractSlingScriptEngine {
 
-    private TemplateEngine templateEngine;
+    private final TemplateEngine templateEngine;
 
-    public GSPScriptEngine(ScriptEngineFactory scriptEngineFactory, ClassLoader classLoader) {
+    public GspScriptEngine(final ScriptEngineFactory scriptEngineFactory, final ClassLoader classLoader) {
         super(scriptEngineFactory);
         this.templateEngine = new GStringTemplateEngine(classLoader);
     }
-    
-    public Object eval(Reader reader, ScriptContext ctx) throws ScriptException {
-        Template template = null;
+
+    public Object eval(final Reader reader, final ScriptContext scriptContext) throws ScriptException {
+        Template template;
         try {
             template = templateEngine.createTemplate(reader);
-        } catch (IOException e) {
-            throw new ScriptException("Unable to compile GSP script: " + e.getMessage());
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new ScriptException("Unable to compile GSP script: " + e.getMessage());
         }
 
-        Bindings bindings = ctx.getBindings(ScriptContext.ENGINE_SCOPE);
-
-        Writable result = template.make(bindings);
+        final Bindings bindings = scriptContext.getBindings(ScriptContext.ENGINE_SCOPE);
+        final Writer writer = scriptContext.getWriter();
+        final Writable result = template.make(bindings);
 
         try {
-            result.writeTo(ctx.getWriter());
+            result.writeTo(writer);
         } catch (IOException e) {
             throw new ScriptException("Unable to write result of script execution: " + e.getMessage());
         }

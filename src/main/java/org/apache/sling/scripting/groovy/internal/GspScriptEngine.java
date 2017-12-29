@@ -22,13 +22,10 @@ import java.io.Writer;
 
 import javax.script.Bindings;
 import javax.script.ScriptContext;
-import javax.script.ScriptEngineFactory;
 import javax.script.ScriptException;
 
 import groovy.lang.Writable;
-import groovy.text.GStringTemplateEngine;
 import groovy.text.Template;
-import groovy.text.TemplateEngine;
 import org.apache.sling.scripting.api.AbstractSlingScriptEngine;
 
 /**
@@ -36,17 +33,17 @@ import org.apache.sling.scripting.api.AbstractSlingScriptEngine;
  */
 public class GspScriptEngine extends AbstractSlingScriptEngine {
 
-    private final TemplateEngine templateEngine;
+    private final GspScriptEngineFactory gspScriptEngineFactory;
 
-    public GspScriptEngine(final ScriptEngineFactory scriptEngineFactory, final ClassLoader classLoader) {
-        super(scriptEngineFactory);
-        this.templateEngine = new GStringTemplateEngine(classLoader);
+    public GspScriptEngine(final GspScriptEngineFactory gspScriptEngineFactory) {
+        super(gspScriptEngineFactory);
+        this.gspScriptEngineFactory = gspScriptEngineFactory;
     }
 
     public Object eval(final Reader reader, final ScriptContext scriptContext) throws ScriptException {
         Template template;
         try {
-            template = templateEngine.createTemplate(reader);
+            template = gspScriptEngineFactory.getTemplateEngine().createTemplate(reader);
         } catch (IOException | ClassNotFoundException e) {
             throw new ScriptException("Unable to compile GSP script: " + e.getMessage());
         }

@@ -16,12 +16,20 @@
  */
 package org.apache.sling.scripting.groovy.internal;
 
+import java.util.Dictionary;
+import java.util.Hashtable;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
 
+import groovy.text.GStringTemplateEngine;
+import groovy.text.TemplateEngine;
 import org.apache.sling.commons.classloader.DynamicClassLoaderManager;
 import org.apache.sling.scripting.api.AbstractScriptEngineFactory;
 import org.codehaus.groovy.util.ReleaseInfo;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.Constants;
+import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
@@ -51,16 +59,25 @@ public class GspScriptEngineFactory extends AbstractScriptEngineFactory {
 
     private GspScriptEngineFactoryConfiguration configuration;
 
+    private BundleContext bundleContext;
+
+    private TemplateEngine templateEngine;
+
+    private ServiceRegistration<TemplateEngine> serviceRegistration;
+
     private final Logger logger = LoggerFactory.getLogger(GspScriptEngineFactory.class);
 
     public GspScriptEngineFactory() {
     }
 
     @Activate
-    private void activate(final GspScriptEngineFactoryConfiguration configuration) {
+    private void activate(final GspScriptEngineFactoryConfiguration configuration, final BundleContext bundleContext) {
         logger.debug("activating");
         this.configuration = configuration;
+        this.bundleContext = bundleContext;
         configure(configuration);
+        templateEngine = new GStringTemplateEngine(dynamicClassLoaderManager.getDynamicClassLoader());
+        registerTemplateEngine();
     }
 
     @Modified
@@ -73,6 +90,9 @@ public class GspScriptEngineFactory extends AbstractScriptEngineFactory {
     @Deactivate
     private void deactivate() {
         logger.debug("deactivating");
+        unregisterTemplateEngine();
+        templateEngine = null;
+        bundleContext = null;
     }
 
     private void configure(final GspScriptEngineFactoryConfiguration configuration) {
@@ -81,16 +101,41 @@ public class GspScriptEngineFactory extends AbstractScriptEngineFactory {
         setNames(configuration.names());
     }
 
+    @Override
     public String getLanguageName() {
         return "Groovy Server Pages";
     }
 
+    @Override
     public String getLanguageVersion() {
         return ReleaseInfo.getVersion();
     }
 
+    @Override
     public ScriptEngine getScriptEngine() {
-        return new GspScriptEngine(this, dynamicClassLoaderManager.getDynamicClassLoader());
+        return new GspScriptEngine(this);
+    }
+
+    private void registerTemplateEngine() {
+        if (templateEngine == null) {
+            return;
+        }
+        final Dictionary<String, String> properties = new Hashtable<>();
+        properties.put(Constants.SERVICE_DESCRIPTION, "Groovy's GStringTemplateEngine");
+        properties.put(Constants.SERVICE_VENDOR, "The Apache Software Foundation");
+        logger.info("registering {} as service {} with properties {}", templateEngine, TemplateEngine.class.getName(), properties);
+        serviceRegistration = bundleContext.registerService(TemplateEngine.class, templateEngine, properties);
+    }
+
+    private void unregisterTemplateEngine() {
+        if (serviceRegistration != null) {
+            serviceRegistration.unregister();
+            serviceRegistration = null;
+        }
+    }
+
+    TemplateEngine getTemplateEngine() {
+        return templateEngine;
     }
 
 }

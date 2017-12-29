@@ -22,6 +22,7 @@ import javax.inject.Inject;
 import javax.script.ScriptEngineFactory;
 
 import aQute.bnd.osgi.Constants;
+import groovy.text.TemplateEngine;
 import org.apache.sling.api.servlets.ServletResolver;
 import org.apache.sling.auth.core.AuthenticationSupport;
 import org.apache.sling.engine.SlingRequestProcessor;
@@ -57,6 +58,9 @@ public class GroovyTestSupport extends TestSupport {
     @Inject
     @Filter(value = "(names=gsp)")
     protected ScriptEngineFactory scriptEngineFactory;
+
+    @Inject
+    protected TemplateEngine templateEngine;
 
     public Option baseConfiguration() {
         return composite(

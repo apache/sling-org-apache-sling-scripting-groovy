@@ -29,7 +29,6 @@
 
   <artifactId>org.apache.sling.scripting.groovy</artifactId>
   <version>1.0.3-SNAPSHOT</version>
-  <packaging>bundle</packaging>
 
   <name>Apache Sling Scripting Groovy</name>
   <description>Support for scripting with Groovy</description>
@@ -51,20 +50,12 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <ScriptEngine-Name>${project.name}</ScriptEngine-Name>
-            <ScriptEngine-Version>${project.version}</ScriptEngine-Version>
-            <_removeheaders>
-              Embed-Dependency,
-              Private-Package,
-              Include-Resource
-            </_removeheaders>
-          </instructions>
-        </configuration>
+        <groupId>biz.aQute.bnd</groupId>
+        <artifactId>bnd-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>biz.aQute.bnd</groupId>
+        <artifactId>bnd-baseline-maven-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

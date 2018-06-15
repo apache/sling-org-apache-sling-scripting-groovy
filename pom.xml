@@ -38,7 +38,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <sling.java.version>8</sling.java.version>
     <org.ops4j.pax.exam.version>4.11.0</org.ops4j.pax.exam.version>
-    <groovy.version>2.4.13</groovy.version>
+    <groovy.version>2.5.0</groovy.version>
   </properties>
 
   <scm>

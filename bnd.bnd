@@ -8,6 +8,9 @@ Bundle-License: Apache License, Version 2.0
 
 Bundle-Vendor: The Apache Software Foundation
 
+Provide-Capability:\
+  osgi.service;objectClass=groovy.text.TemplateEngine
+
 ScriptEngine-Name: ${project.name}
 
 ScriptEngine-Version: ${project.version}

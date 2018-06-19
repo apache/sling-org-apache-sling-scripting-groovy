@@ -23,6 +23,7 @@ import javax.script.ScriptEngineFactory;
 
 import aQute.bnd.osgi.Constants;
 import groovy.text.TemplateEngine;
+import org.apache.sling.api.adapter.AdapterFactory;
 import org.apache.sling.api.servlets.ServletResolver;
 import org.apache.sling.auth.core.AuthenticationSupport;
 import org.apache.sling.engine.SlingRequestProcessor;
@@ -45,6 +46,11 @@ public class GroovyTestSupport extends TestSupport {
 
     @Inject
     protected ServletResolver servletResolver;
+
+    // SlingScriptAdapterFactory
+    @Inject
+    @Filter(value = "(adapters=org.apache.sling.api.scripting.SlingScript)")
+    protected AdapterFactory adapterFactory;
 
     @Inject
     protected SlingRequestProcessor slingRequestProcessor;

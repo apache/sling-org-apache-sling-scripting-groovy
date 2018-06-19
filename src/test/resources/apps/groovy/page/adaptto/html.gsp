@@ -18,7 +18,7 @@
     under the License.
 -->
 <%
-    def page = request.adaptTo(org.apache.sling.scripting.groovy.it.app.Page.class)
+    def page = request.adaptTo(org.apache.sling.scripting.groovy.it.app.Page)
 %>
 <html>
 <head>

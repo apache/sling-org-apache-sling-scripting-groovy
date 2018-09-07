@@ -35,6 +35,8 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferencePolicy;
+import org.osgi.service.component.annotations.ReferencePolicyOption;
 import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,8 +56,11 @@ import org.slf4j.LoggerFactory;
 )
 public class GspScriptEngineFactory extends AbstractScriptEngineFactory {
 
-    @Reference
-    private DynamicClassLoaderManager dynamicClassLoaderManager;
+    @Reference(
+        policy = ReferencePolicy.DYNAMIC,
+        policyOption = ReferencePolicyOption.GREEDY
+    )
+    private volatile DynamicClassLoaderManager dynamicClassLoaderManager;
 
     private GspScriptEngineFactoryConfiguration configuration;
 

@@ -47,8 +47,8 @@ import org.slf4j.LoggerFactory;
 @Component(
     service = ScriptEngineFactory.class,
     property = {
-        "service.description=GSP Script Engine",
-        "service.vendor=The Apache Software Foundation"
+        Constants.SERVICE_DESCRIPTION + "=Apache Sling Scripting Groovy GSP ScriptEngineFactory",
+        Constants.SERVICE_VENDOR + "=The Apache Software Foundation"
     }
 )
 @Designate(

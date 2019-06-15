@@ -31,6 +31,7 @@ import org.apache.sling.testing.paxexam.TestSupport;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
+import org.ops4j.pax.exam.options.ModifiableCompositeOption;
 import org.ops4j.pax.exam.util.Filter;
 import org.osgi.service.http.HttpService;
 
@@ -68,7 +69,7 @@ public class GroovyTestSupport extends TestSupport {
     @Inject
     protected TemplateEngine templateEngine;
 
-    public Option baseConfiguration() {
+    public ModifiableCompositeOption baseConfiguration() {
         return composite(
             super.baseConfiguration(),
             quickstart(),

@@ -54,4 +54,10 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
         "gstring"
     };
 
+    @AttributeDefinition(
+        name = "language name",
+        description = "The name of the script engine language."
+    )
+    String language_name() default "Groovy GString";
+
 }

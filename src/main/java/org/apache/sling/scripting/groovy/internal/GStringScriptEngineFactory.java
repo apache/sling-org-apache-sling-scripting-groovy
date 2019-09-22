@@ -105,7 +105,7 @@ public class GStringScriptEngineFactory extends AbstractScriptEngineFactory {
 
     @Override
     public String getLanguageName() {
-        return "Groovy GString";
+        return configuration.language_name();
     }
 
     @Override

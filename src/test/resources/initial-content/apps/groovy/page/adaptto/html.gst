@@ -20,7 +20,7 @@
 <%
     def page = request.adaptTo(org.apache.sling.scripting.groovy.it.app.Page)
 %>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <title>$page.title</title>

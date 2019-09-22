@@ -28,24 +28,21 @@ import groovy.lang.Writable;
 import groovy.text.Template;
 import org.apache.sling.scripting.api.AbstractSlingScriptEngine;
 
-/**
- * The actual GSP Script Engine, which simply wraps Groovy's
- */
-public class GspScriptEngine extends AbstractSlingScriptEngine {
+public class GStringScriptEngine extends AbstractSlingScriptEngine {
 
-    private final GspScriptEngineFactory gspScriptEngineFactory;
+    private final GStringScriptEngineFactory scriptEngineFactory;
 
-    public GspScriptEngine(final GspScriptEngineFactory gspScriptEngineFactory) {
-        super(gspScriptEngineFactory);
-        this.gspScriptEngineFactory = gspScriptEngineFactory;
+    GStringScriptEngine(final GStringScriptEngineFactory gStringScriptEngineFactory) {
+        super(gStringScriptEngineFactory);
+        this.scriptEngineFactory = gStringScriptEngineFactory;
     }
 
     public Object eval(final Reader reader, final ScriptContext scriptContext) throws ScriptException {
-        Template template;
+        final Template template;
         try {
-            template = gspScriptEngineFactory.getTemplateEngine().createTemplate(reader);
+            template = scriptEngineFactory.getTemplateEngine().createTemplate(reader);
         } catch (IOException | ClassNotFoundException e) {
-            throw new ScriptException("Unable to compile GSP script: " + e.getMessage());
+            throw new ScriptException("Unable to compile GString template: " + e.getMessage());
         }
 
         final Bindings bindings = scriptContext.getBindings(ScriptContext.ENGINE_SCOPE);

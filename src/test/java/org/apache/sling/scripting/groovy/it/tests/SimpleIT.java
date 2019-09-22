@@ -48,7 +48,7 @@ public class SimpleIT extends GroovyTestSupport {
     private Document document;
 
     @Inject
-    @Filter(value = "(path=/apps/groovy/page/simple/html.gsp)")
+    @Filter(value = "(path=/apps/groovy/page/simple/html.gst)")
     private ResourcePresence resourcePresence;
 
     @Configuration
@@ -56,7 +56,7 @@ public class SimpleIT extends GroovyTestSupport {
         return new Option[]{
             baseConfiguration(),
             factoryConfiguration("org.apache.sling.resource.presence.internal.ResourcePresenter")
-                .put("path", "/apps/groovy/page/simple/html.gsp")
+                .put("path", "/apps/groovy/page/simple/html.gst")
                 .asOption(),
         };
     }

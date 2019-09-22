@@ -2,7 +2,7 @@
     "jcr:primaryType": "nt:unstructured",
     "sling:resourceType": "groovy/page/main",
     "sling:resourceSuperType": "groovy/page",
-    "title": "Apache Sling Scripting Groovy",
+    "title": "Apache Sling Scripting Groovy GString",
     "simple": {
         "jcr:primaryType": "nt:unstructured",
         "sling:resourceType": "groovy/page/simple",

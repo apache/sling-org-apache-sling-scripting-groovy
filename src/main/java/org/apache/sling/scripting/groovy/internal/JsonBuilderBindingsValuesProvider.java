@@ -29,7 +29,7 @@ import org.osgi.service.component.annotations.Component;
     immediate = true,
     service = BindingsValuesProvider.class,
     property = {
-        "javax.script.name=gsp",
+        "javax.script.name=gstring",
         "service.description=Groovy JsonBuilder BindingsValuesProvider",
         "service.vendor=The Apache Software Foundation"
 

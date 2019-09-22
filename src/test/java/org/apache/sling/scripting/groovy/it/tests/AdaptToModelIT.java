@@ -48,7 +48,7 @@ public class AdaptToModelIT extends GroovyTestSupport {
     private Document document;
 
     @Inject
-    @Filter(value = "(path=/apps/groovy/page/adaptto/html.gsp)")
+    @Filter(value = "(path=/apps/groovy/page/adaptto/html.gst)")
     private ResourcePresence resourcePresence;
 
     @Configuration
@@ -56,7 +56,7 @@ public class AdaptToModelIT extends GroovyTestSupport {
         return new Option[]{
             baseConfiguration(),
             factoryConfiguration("org.apache.sling.resource.presence.internal.ResourcePresenter")
-                .put("path", "/apps/groovy/page/adaptto/html.gsp")
+                .put("path", "/apps/groovy/page/adaptto/html.gst")
                 .asOption(),
         };
     }

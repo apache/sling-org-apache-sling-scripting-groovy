@@ -41,20 +41,17 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Script engine for Groovy Server Pages.
- */
 @Component(
     service = ScriptEngineFactory.class,
     property = {
-        Constants.SERVICE_DESCRIPTION + "=Apache Sling Scripting Groovy GSP ScriptEngineFactory",
+        Constants.SERVICE_DESCRIPTION + "=Apache Sling Scripting Groovy GString ScriptEngineFactory",
         Constants.SERVICE_VENDOR + "=The Apache Software Foundation"
     }
 )
 @Designate(
-    ocd = GspScriptEngineFactoryConfiguration.class
+    ocd = GStringScriptEngineFactoryConfiguration.class
 )
-public class GspScriptEngineFactory extends AbstractScriptEngineFactory {
+public class GStringScriptEngineFactory extends AbstractScriptEngineFactory {
 
     @Reference(
         policy = ReferencePolicy.DYNAMIC,
@@ -62,7 +59,7 @@ public class GspScriptEngineFactory extends AbstractScriptEngineFactory {
     )
     private volatile DynamicClassLoaderManager dynamicClassLoaderManager;
 
-    private GspScriptEngineFactoryConfiguration configuration;
+    private GStringScriptEngineFactoryConfiguration configuration;
 
     private BundleContext bundleContext;
 
@@ -70,13 +67,13 @@ public class GspScriptEngineFactory extends AbstractScriptEngineFactory {
 
     private ServiceRegistration<TemplateEngine> serviceRegistration;
 
-    private final Logger logger = LoggerFactory.getLogger(GspScriptEngineFactory.class);
+    private final Logger logger = LoggerFactory.getLogger(GStringScriptEngineFactory.class);
 
-    public GspScriptEngineFactory() {
+    public GStringScriptEngineFactory() {
     }
 
     @Activate
-    private void activate(final GspScriptEngineFactoryConfiguration configuration, final BundleContext bundleContext) {
+    private void activate(final GStringScriptEngineFactoryConfiguration configuration, final BundleContext bundleContext) {
         logger.debug("activating");
         this.configuration = configuration;
         this.bundleContext = bundleContext;
@@ -86,7 +83,7 @@ public class GspScriptEngineFactory extends AbstractScriptEngineFactory {
     }
 
     @Modified
-    private void modified(final GspScriptEngineFactoryConfiguration configuration) {
+    private void modified(final GStringScriptEngineFactoryConfiguration configuration) {
         logger.debug("modifying");
         this.configuration = configuration;
         configure(configuration);
@@ -100,7 +97,7 @@ public class GspScriptEngineFactory extends AbstractScriptEngineFactory {
         bundleContext = null;
     }
 
-    private void configure(final GspScriptEngineFactoryConfiguration configuration) {
+    private void configure(final GStringScriptEngineFactoryConfiguration configuration) {
         setExtensions(configuration.extensions());
         setMimeTypes(configuration.mimeTypes());
         setNames(configuration.names());
@@ -108,7 +105,7 @@ public class GspScriptEngineFactory extends AbstractScriptEngineFactory {
 
     @Override
     public String getLanguageName() {
-        return "Groovy Server Pages";
+        return "Groovy GString";
     }
 
     @Override
@@ -118,7 +115,7 @@ public class GspScriptEngineFactory extends AbstractScriptEngineFactory {
 
     @Override
     public ScriptEngine getScriptEngine() {
-        return new GspScriptEngine(this);
+        return new GStringScriptEngine(this);
     }
 
     private void registerTemplateEngine() {

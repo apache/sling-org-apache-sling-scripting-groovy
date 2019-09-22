@@ -63,7 +63,7 @@ public class GroovyTestSupport extends TestSupport {
     protected HttpService httpService;
 
     @Inject
-    @Filter(value = "(names=gsp)")
+    @Filter(value = "(names=GString)")
     protected ScriptEngineFactory scriptEngineFactory;
 
     @Inject

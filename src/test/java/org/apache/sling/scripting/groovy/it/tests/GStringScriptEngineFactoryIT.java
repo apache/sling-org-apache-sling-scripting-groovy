@@ -35,7 +35,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class GspScriptEngineFactoryIT extends GroovyTestSupport {
+public class GStringScriptEngineFactoryIT extends GroovyTestSupport {
 
     @Configuration
     public Option[] configuration() {
@@ -56,7 +56,7 @@ public class GspScriptEngineFactoryIT extends GroovyTestSupport {
 
     @Test
     public void testScriptEngineFactoryLanguageName() {
-        assertThat(scriptEngineFactory.getLanguageName(), is("Groovy Server Pages"));
+        assertThat(scriptEngineFactory.getLanguageName(), is("Groovy GString"));
     }
 
     @Test
@@ -66,7 +66,7 @@ public class GspScriptEngineFactoryIT extends GroovyTestSupport {
 
     @Test
     public void testScriptEngineFactoryNames() {
-        assertThat(scriptEngineFactory.getNames(), hasItem("gsp"));
+        assertThat(scriptEngineFactory.getNames(), hasItem("GString"));
     }
 
 }

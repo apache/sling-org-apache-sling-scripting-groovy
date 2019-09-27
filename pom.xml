@@ -29,7 +29,7 @@
   </parent>
 
   <artifactId>org.apache.sling.scripting.groovy</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1-SNAPSHOT</version>
 
   <name>Apache Sling Scripting Groovy</name>
   <description>Support for scripting with Groovy</description>
@@ -46,7 +46,7 @@
     <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-scripting-groovy.git</connection>
     <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-scripting-groovy.git</developerConnection>
     <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-scripting-groovy.git</url>
-    <tag>org.apache.sling.scripting.groovy-1.1.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <build>

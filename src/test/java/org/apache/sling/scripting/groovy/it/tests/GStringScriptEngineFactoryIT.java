@@ -61,7 +61,7 @@ public class GStringScriptEngineFactoryIT extends GroovyTestSupport {
 
     @Test
     public void testScriptEngineFactoryLanguageVersion() {
-        assertThat(scriptEngineFactory.getLanguageVersion(), startsWith("2.5."));
+        assertThat(scriptEngineFactory.getLanguageVersion(), startsWith("3.0."));
     }
 
     @Test

@@ -23,6 +23,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
     name = "Apache Sling Scripting Groovy GString ScriptEngineFactory",
     description = "Script engine factory for Groovy's GString template engine."
 )
+@SuppressWarnings("java:S100")
 @interface GStringScriptEngineFactoryConfiguration {
 
     @AttributeDefinition(

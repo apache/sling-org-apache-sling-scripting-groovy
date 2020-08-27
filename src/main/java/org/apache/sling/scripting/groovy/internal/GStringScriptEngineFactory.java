@@ -51,6 +51,7 @@ import org.slf4j.LoggerFactory;
 @Designate(
     ocd = GStringScriptEngineFactoryConfiguration.class
 )
+@SuppressWarnings("java:S3077")
 public class GStringScriptEngineFactory extends AbstractScriptEngineFactory {
 
     @Reference(

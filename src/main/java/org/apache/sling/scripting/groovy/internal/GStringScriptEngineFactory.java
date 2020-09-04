@@ -70,7 +70,7 @@ public class GStringScriptEngineFactory extends AbstractScriptEngineFactory {
 
     private final Logger logger = LoggerFactory.getLogger(GStringScriptEngineFactory.class);
 
-    public GStringScriptEngineFactory() {
+    public GStringScriptEngineFactory() { //
     }
 
     @Activate

@@ -123,6 +123,7 @@ public class GStringScriptEngineFactory extends AbstractScriptEngineFactory {
         if (templateEngine == null) {
             return;
         }
+        @SuppressWarnings("java:S1149")
         final Dictionary<String, String> properties = new Hashtable<>();
         properties.put(Constants.SERVICE_DESCRIPTION, "Groovy's GStringTemplateEngine");
         properties.put(Constants.SERVICE_VENDOR, "The Apache Software Foundation");

@@ -27,11 +27,11 @@ import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.startsWith;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
@@ -46,7 +46,7 @@ public class GStringScriptEngineFactoryIT extends GroovyTestSupport {
 
     @Test
     public void testScriptEngineFactory() {
-        assertNotNull(scriptEngineFactory);
+        assertThat(scriptEngineFactory, is(notNullValue()));
     }
 
     @Test

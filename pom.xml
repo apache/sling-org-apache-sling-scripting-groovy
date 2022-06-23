@@ -36,7 +36,7 @@
 
   <properties>
     <org.ops4j.pax.exam.version>4.13.3</org.ops4j.pax.exam.version>
-    <groovy.version>3.0.1</groovy.version>
+    <groovy.version>4.0.3</groovy.version>
   </properties>
 
   <scm>
@@ -165,19 +165,19 @@
     </dependency>
     <!-- Groovy -->
     <dependency>
-      <groupId>org.codehaus.groovy</groupId>
+      <groupId>org.apache.groovy</groupId>
       <artifactId>groovy</artifactId>
       <version>${groovy.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.codehaus.groovy</groupId>
+      <groupId>org.apache.groovy</groupId>
       <artifactId>groovy-json</artifactId>
       <version>${groovy.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.codehaus.groovy</groupId>
+      <groupId>org.apache.groovy</groupId>
       <artifactId>groovy-templates</artifactId>
       <version>${groovy.version}</version>
       <scope>provided</scope>

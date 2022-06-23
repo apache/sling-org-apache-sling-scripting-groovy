@@ -81,9 +81,9 @@ public class GroovyTestSupport extends TestSupport {
             quickstart(),
             // Sling Scripting Groovy
             testBundle("bundle.filename"),
-            mavenBundle().groupId("org.codehaus.groovy").artifactId("groovy").versionAsInProject(),
-            mavenBundle().groupId("org.codehaus.groovy").artifactId("groovy-json").versionAsInProject(),
-            mavenBundle().groupId("org.codehaus.groovy").artifactId("groovy-templates").versionAsInProject(),
+            mavenBundle().groupId("org.apache.groovy").artifactId("groovy").versionAsInProject(),
+            mavenBundle().groupId("org.apache.groovy").artifactId("groovy-json").versionAsInProject(),
+            mavenBundle().groupId("org.apache.groovy").artifactId("groovy-templates").versionAsInProject(),
             // testing
             slingResourcePresence(),
             mavenBundle().groupId("org.jsoup").artifactId("jsoup").versionAsInProject(),

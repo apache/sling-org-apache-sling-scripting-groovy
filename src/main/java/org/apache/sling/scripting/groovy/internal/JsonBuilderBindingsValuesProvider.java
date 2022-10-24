@@ -37,6 +37,9 @@ import org.osgi.service.component.annotations.Component;
 )
 public final class JsonBuilderBindingsValuesProvider implements BindingsValuesProvider {
 
+    public JsonBuilderBindingsValuesProvider() { //
+    }
+
     @Override
     public void addBindings(final Bindings bindings) {
         final JsonBuilder jsonBuilder = new JsonBuilder();

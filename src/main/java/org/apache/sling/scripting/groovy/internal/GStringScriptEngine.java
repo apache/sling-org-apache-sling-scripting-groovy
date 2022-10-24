@@ -28,7 +28,7 @@ import groovy.lang.Writable;
 import groovy.text.Template;
 import org.apache.sling.scripting.api.AbstractSlingScriptEngine;
 
-public class GStringScriptEngine extends AbstractSlingScriptEngine {
+public final class GStringScriptEngine extends AbstractSlingScriptEngine {
 
     private final GStringScriptEngineFactory scriptEngineFactory;
 

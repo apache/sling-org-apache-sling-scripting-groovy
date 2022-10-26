@@ -41,6 +41,9 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Factory for {@link GStringScriptEngine}s.
+ */
 @Component(
     service = ScriptEngineFactory.class,
     property = {

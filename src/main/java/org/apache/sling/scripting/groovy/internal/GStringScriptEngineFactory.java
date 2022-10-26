@@ -77,6 +77,7 @@ public final class GStringScriptEngineFactory extends AbstractScriptEngineFactor
     }
 
     @Activate
+    @SuppressWarnings("unused")
     private void activate(final GStringScriptEngineFactoryConfiguration configuration, final BundleContext bundleContext) {
         logger.debug("activating");
         this.configuration = configuration;
@@ -87,6 +88,7 @@ public final class GStringScriptEngineFactory extends AbstractScriptEngineFactor
     }
 
     @Modified
+    @SuppressWarnings("unused")
     private void modified(final GStringScriptEngineFactoryConfiguration configuration) {
         logger.debug("modifying");
         this.configuration = configuration;
@@ -94,6 +96,7 @@ public final class GStringScriptEngineFactory extends AbstractScriptEngineFactor
     }
 
     @Deactivate
+    @SuppressWarnings("unused")
     private void deactivate() {
         logger.debug("deactivating");
         unregisterTemplateEngine();

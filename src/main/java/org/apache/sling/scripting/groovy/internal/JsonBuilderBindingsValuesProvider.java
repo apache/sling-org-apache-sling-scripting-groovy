@@ -32,7 +32,6 @@ import org.osgi.service.component.annotations.Component;
         "javax.script.name=gstring",
         "service.description=Groovy JsonBuilder BindingsValuesProvider",
         "service.vendor=The Apache Software Foundation"
-
     }
 )
 public final class JsonBuilderBindingsValuesProvider implements BindingsValuesProvider {

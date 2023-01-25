@@ -29,7 +29,7 @@
   </parent>
 
   <artifactId>org.apache.sling.scripting.groovy</artifactId>
-  <version>1.2.1-SNAPSHOT</version>
+  <version>1.3.0-SNAPSHOT</version>
 
   <name>Apache Sling Scripting Groovy</name>
   <description>Support for scripting with Groovy</description>

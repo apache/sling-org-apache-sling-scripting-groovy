@@ -6,6 +6,6 @@
 
 This module is part of the [Apache Sling](https://sling.apache.org) project.
 
-This module provides a script engine for [Sling Scripting](https://sling.apache.org/documentation/bundles/scripting.html) using Groovy's [`GStringTemplateEngine`](http://docs.groovy-lang.org/docs/next/html/documentation/template-engines.html#_gstringtemplateengine). It requires the `groovy`, `groovy-json` and `groovy-templates` bundles to be installed separately.
+This module provides a script engine for [Sling Scripting](https://sling.apache.org/documentation/bundles/scripting.html) using Groovy's [`GStringTemplateEngine`](http://docs.groovy-lang.org/docs/next/html/documentation/template-engines.html#_gstringtemplateengine). It requires the `groovy` and `groovy-templates` bundles to be installed separately.
 
 See chapter [Template engines](http://docs.groovy-lang.org/docs/groovy-latest/html/documentation/#_template_engines) in Groovy's documentation also.

@@ -39,6 +39,7 @@ import static org.apache.sling.testing.paxexam.SlingOptions.slingModels;
 import static org.apache.sling.testing.paxexam.SlingOptions.slingQuickstartOakTar;
 import static org.apache.sling.testing.paxexam.SlingOptions.slingResourcePresence;
 import static org.apache.sling.testing.paxexam.SlingOptions.slingScripting;
+import static org.apache.sling.testing.paxexam.SlingOptions.spifly;
 import static org.ops4j.pax.exam.CoreOptions.composite;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.cm.ConfigurationAdminOptions.factoryConfiguration;
@@ -78,6 +79,7 @@ public class GroovyTestSupport extends TestSupport {
             mavenBundle().groupId("org.apache.groovy").artifactId("groovy").versionAsInProject(),
             mavenBundle().groupId("org.apache.groovy").artifactId("groovy-templates").versionAsInProject(),
             // testing
+            testGroovyJson(),
             slingResourcePresence(),
             factoryConfiguration("org.apache.sling.jcr.repoinit.RepositoryInitializer")
                 .put("scripts", new String[]{"create path (sling:OrderedFolder) /content/groovy\nset ACL for everyone\nallow jcr:read on /content/groovy\nend"})
@@ -92,6 +94,13 @@ public class GroovyTestSupport extends TestSupport {
         testProbeBuilder.setHeader("Sling-Model-Packages", "org.apache.sling.scripting.groovy.it.app");
         testProbeBuilder.setHeader("Sling-Initial-Content", "initial-content");
         return testProbeBuilder;
+    }
+
+    protected Option testGroovyJson() {
+        return composite(
+            mavenBundle().groupId("org.apache.groovy").artifactId("groovy-json").versionAsInProject(),
+            spifly()
+        );
     }
 
     protected Option quickstart() {

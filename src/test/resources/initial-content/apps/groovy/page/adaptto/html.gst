@@ -27,5 +27,6 @@
 </head>
 <body>
 <span id="name">$page.name</span>
+<span id="json">$page.json</span>
 </body>
 </html>

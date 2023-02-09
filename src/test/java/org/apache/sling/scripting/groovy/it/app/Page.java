@@ -18,6 +18,10 @@
  */
 package org.apache.sling.scripting.groovy.it.app;
 
+import java.util.Collections;
+import java.util.Map;
+
+import groovy.json.JsonBuilder;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
@@ -47,6 +51,12 @@ public class Page {
 
     public String getTitle() {
         return resource.getValueMap().get("title", String.class);
+    }
+
+    public String getJson() {
+        final Map<String, String> map = Collections.singletonMap("name", getName());
+        final JsonBuilder jsonBuilder = new JsonBuilder(map);
+        return jsonBuilder.toPrettyString();
     }
 
 }

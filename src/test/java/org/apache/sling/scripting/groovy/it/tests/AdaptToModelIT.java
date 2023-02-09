@@ -19,9 +19,11 @@
 package org.apache.sling.scripting.groovy.it.tests;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.inject.Inject;
 
+import groovy.json.JsonSlurper;
 import org.apache.sling.resource.presence.ResourcePresence;
 import org.apache.sling.scripting.groovy.it.GroovyTestSupport;
 import org.jsoup.Jsoup;
@@ -76,6 +78,14 @@ public class AdaptToModelIT extends GroovyTestSupport {
     public void testPageName() {
         final Element name = document.getElementById("name");
         assertThat(name.text(), is("adaptto"));
+    }
+
+    @Test
+    public void testJson() {
+        final Element name = document.getElementById("json");
+        final JsonSlurper jsonSlurper = new JsonSlurper();
+        final Map<String, String> json = (Map) jsonSlurper.parseText(name.text());
+        assertThat(json.get("name"), is("adaptto"));
     }
 
 }

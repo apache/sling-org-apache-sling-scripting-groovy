@@ -24,7 +24,7 @@
   <parent>
     <groupId>org.apache.sling</groupId>
     <artifactId>sling-bundle-parent</artifactId>
-    <version>49</version>
+    <version>50</version>
     <relativePath />
   </parent>
 
@@ -36,7 +36,7 @@
 
   <properties>
     <javadoc.excludePackageNames />
-    <project.build.outputTimestamp>1970-01-01T00:00:00Z</project.build.outputTimestamp>
+    <project.build.outputTimestamp>1980-01-01T00:00:02Z</project.build.outputTimestamp>
     <org.ops4j.pax.exam.version>4.13.3</org.ops4j.pax.exam.version>
     <groovy.version>4.0.13</groovy.version>
   </properties>
@@ -153,7 +153,7 @@
     <!-- OSGi -->
     <dependency>
       <groupId>org.osgi</groupId>
-      <artifactId>osgi.core</artifactId>
+      <artifactId>org.osgi.framework</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
